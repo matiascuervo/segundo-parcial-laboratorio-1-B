@@ -176,6 +176,9 @@ personaje = Personaje(H/2 - 300, 450, 0, 10,[personaje_camina,
 personaje.cantidad_daño_personaje = 20
 personaje.cantidad_daño_proyectil = 20
 
+imagen_corazon = personaje.cargar_sprites_corazones()
+
+#////////////////
 lista_enemigos=[]
 gusano_enemigo_3 = Enemigo(889,270, 0, 5, [gusano, gusano_izquierda], (805, 950), 30, 35, 10, 5)
 gusano_enemigo_2 = Enemigo(581, 90, 0, 5, [gusano, gusano_izquierda], (502, 789), 30, 35, 10, 5)
@@ -256,7 +259,7 @@ while True:
     
     
     actualizar_pantalla(PANTALLA, que_hace, personaje.velocidad,piso)
-    personaje.vida_personaje(PANTALLA)
+    personaje.vida_personaje(PANTALLA,imagen_corazon)
     #mouse_x, mouse_y = pygame.mouse.get_pos()
     #print(f"Coordenadas del cursor del mouse: ({mouse_x}, {mouse_y})")
     if get_mode() == True:
@@ -322,17 +325,19 @@ while True:
     for corazon in lista_corazones:
         corazon.update()
         corazon.renderizar_item(PANTALLA)
-        if personaje.rectangulo_personaje.colliderect(corazon.rectangulo_item):    
+        if personaje.rectangulo_personaje.colliderect(corazon.rectangulo_item):
+            nueva_vida_heroe = corazon.colision_personaje_items(personaje.rectangulo_personaje, personaje.vida_heroe)
+            personaje.vida_heroe = nueva_vida_heroe    
             lista_corazones.remove(corazon)
 
     for estrella in lista_estrellas:
         if personaje.rectangulo_personaje.colliderect(estrella.rectangulo_item):
-            estrella.colision_personaje_items(personaje.rectangulo_personaje)
+            estrella.colision_personaje_items(personaje.rectangulo_personaje,personaje.vida_heroe)
             contador_estrellas += 1
             lista_estrellas.remove(estrella)
             
     
-    
+    print(personaje.vida_heroe)
        
    
    

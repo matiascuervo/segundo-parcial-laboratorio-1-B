@@ -35,9 +35,9 @@ class Personaje():
         for _ in range(self.vidas):
             self.sprites_corazones.append(imagen_corazon.copy())
 
+        return imagen_corazon    
 
-
-    def vida_personaje(self, pantalla):
+    def vida_personaje(self, pantalla,imagen_corazon):
         x = 20  # Posición x inicial para los corazones
         y = 61  # Posición y para los corazones
 
@@ -50,6 +50,10 @@ class Personaje():
             if self.vidas < len(self.sprites_corazones):
                 if self.sprites_corazones:
                     self.sprites_corazones.pop()
+        if self.vida_heroe > self.vidas * 100:
+            while self.vidas < self.vida_heroe // 100:
+                self.sprites_corazones.append(imagen_corazon)
+                self.vidas += 1            
  # Eliminar el último sprite de corazón de la lista
 
 

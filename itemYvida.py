@@ -1,5 +1,6 @@
 import pygame
-contador_estrellas = 0 
+contador_estrellas = 0
+
 class Item(pygame.sprite.Sprite):
     def __init__(self, x, y,tipo):
         super().__init__()
@@ -41,13 +42,17 @@ class Item(pygame.sprite.Sprite):
     def renderizar_item(self, pantalla):
         pantalla.blit(self.image,self.rectangulo_item)
 
-    def colision_personaje_items(self,rectangulo_personaje):
-        global contador_estrellas 
+    def colision_personaje_items(self, rectangulo_personaje, vida_heroe):
+        global contador_estrellas
+        nueva_vida_heroe = vida_heroe
 
         if self.tipo == "estrella" and self.rectangulo_item.colliderect(rectangulo_personaje):
             contador_estrellas += 1
         if self.tipo == "corazon" and self.rectangulo_item.colliderect(rectangulo_personaje):
-            rectangulo_personaje.vida_heroe += 100
+            nueva_vida_heroe += 100
+
+        return nueva_vida_heroe
+
 
     def set_position(self, x, y):
         self.rectangulo_item.x = x
