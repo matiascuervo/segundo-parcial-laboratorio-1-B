@@ -3,9 +3,9 @@ class Proyectil(pygame.sprite.Sprite):
     def __init__(self, x, y, velocidad):
         super().__init__()
         self.imagenes = [
-            pygame.image.load("juego_parcial/ataque heroe/0.png"),
-            pygame.image.load("juego_parcial/ataque heroe/1.png"),
-            pygame.image.load("juego_parcial/ataque heroe/2.png")
+            pygame.image.load("ataque heroe/0.png"),
+            pygame.image.load("ataque heroe/1.png"),
+            pygame.image.load("ataque heroe/2.png")
         ]
         self.indice_animacion = 0
         self.image = self.imagenes[self.indice_animacion]

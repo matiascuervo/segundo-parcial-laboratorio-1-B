@@ -4,8 +4,8 @@ class Proyectil_enemigo(pygame.sprite.Sprite):
     def __init__(self, x, y, velocidad):
         super().__init__()
         self.imagenes = [
-            pygame.image.load("juego_parcial/ataque_planta/bola_verde/0.png"),
-            pygame.image.load("juego_parcial/ataque_planta/bola_verde/1.png")
+            pygame.image.load("ataque_planta/1.png"),
+            pygame.image.load("ataque_planta/2.png")
         ]
         self.indice_animacion = 0
         self.image = self.imagenes[self.indice_animacion]

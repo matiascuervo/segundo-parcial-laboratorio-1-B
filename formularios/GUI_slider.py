@@ -1,5 +1,5 @@
 import pygame
-from GUI_widget import Widget
+from formularios.GUI_widget import Widget
 import math
 class Slider(Widget):
     def __init__(self,screen, master_x, master_y, x,y,w,h, value,color_background,  color_circulo):
@@ -39,7 +39,7 @@ class Slider(Widget):
         super().draw()
         pygame.draw.circle(self._master, self.color_circulo, self.rectangulo_circulo.center, self.radio_circulo)
 
-    def update(self, lista_eventos):
+    def update(self, lista_eventos, keys, screen, w):
         mouse_buttons = pygame.mouse.get_pressed()
         if mouse_buttons[0]:
             mouse_pos = pygame.mouse.get_pos()

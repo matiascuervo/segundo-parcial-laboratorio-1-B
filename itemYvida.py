@@ -1,19 +1,19 @@
 import pygame
-contador_estrellas = 0
+
 
 class Item(pygame.sprite.Sprite):
     def __init__(self, x, y,tipo):
         super().__init__()
         self.imagenes_corazones = [
-            pygame.image.load("juego_parcial/vida_estrellas\corazon_0.png"),
-            pygame.image.load("juego_parcial/vida_estrellas/corazon_1.png"),
-            pygame.image.load("juego_parcial/vida_estrellas/corazon_2.png"),
-            pygame.image.load("juego_parcial/vida_estrellas/corazon_3.png"),
-            pygame.image.load("juego_parcial/vida_estrellas/corazon_4.png")
+            pygame.image.load("./vida_estrellas\corazon_0.png"),
+            pygame.image.load("./vida_estrellas/corazon_1.png"),
+            pygame.image.load("./vida_estrellas/corazon_2.png"),
+            pygame.image.load("./vida_estrellas/corazon_3.png"),
+            pygame.image.load("./vida_estrellas/corazon_4.png")
         ]
         self.imagenes_estrellas = [
-            pygame.image.load("juego_parcial/vida_estrellas\estrella_0.png"),
-            pygame.image.load("juego_parcial/vida_estrellas/estrella_1.png")
+            pygame.image.load("./vida_estrellas\estrella_0.png"),
+            pygame.image.load("./vida_estrellas/estrella_1.png")
         ]
 
         self.indice_animacion = 0
@@ -43,11 +43,12 @@ class Item(pygame.sprite.Sprite):
         pantalla.blit(self.image,self.rectangulo_item)
 
     def colision_personaje_items(self, rectangulo_personaje, vida_heroe):
-        global contador_estrellas
+        
         nueva_vida_heroe = vida_heroe
 
         if self.tipo == "estrella" and self.rectangulo_item.colliderect(rectangulo_personaje):
-            contador_estrellas += 1
+            self.contador_estrellas += 1
+            print("es la estrella de items")
         if self.tipo == "corazon" and self.rectangulo_item.colliderect(rectangulo_personaje):
             nueva_vida_heroe += 100
 

@@ -8,10 +8,10 @@ class Plataforma():
         self.velocidad = velocidad
         #self.posicion_inicial = posicion_inicial
         self.sprites_plataforma = [
-            pygame.transform.scale(pygame.image.load("juego_parcial\plataformas\plataforma_tierra.png"),escala_plataforma),
-            pygame.transform.scale(pygame.image.load("juego_parcial\plataformas/0.png"),escala_plataforma),
-            pygame.transform.scale(pygame.image.load("juego_parcial\plataformas/1.png"),escala_plataforma),
-            pygame.transform.scale(pygame.image.load("juego_parcial\plataformas/5.png"),escala_plataforma)
+            pygame.transform.scale(pygame.image.load("./plataformas\plataforma_tierra.png"),escala_plataforma),
+            pygame.transform.scale(pygame.image.load("./plataformas/0.png"),escala_plataforma),
+            pygame.transform.scale(pygame.image.load("./plataformas/1.png"),escala_plataforma),
+            pygame.transform.scale(pygame.image.load("./plataformas/5.png"),escala_plataforma)
         ]
         self.posicion = posicion
         self.rectangulo_plataforma = self.sprites_plataforma[posicion].get_rect()

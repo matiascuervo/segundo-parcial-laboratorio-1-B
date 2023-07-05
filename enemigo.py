@@ -10,9 +10,10 @@ pygame.mixer.init()
 
 class Enemigo(Personaje):
     def __init__(self, x_inicial, y_inicial, posicion_inicial, velocidad, lista_animaciones, rango_movimiento,width,height,cantidad_daño_personaje,cantidad_daño_proyectil):
-        super().__init__(x_inicial, y_inicial, posicion_inicial, velocidad, lista_animaciones,cantidad_daño_personaje,cantidad_daño_proyectil,personaje_daño)
+        super().__init__(x_inicial, y_inicial, posicion_inicial, velocidad, lista_animaciones,cantidad_daño_personaje,cantidad_daño_proyectil)
         self.rango_movimiento = rango_movimiento
         self.direccion = 1
+        self.lista_proyectiles_enemigo = []
         self.lista_animaciones_derecha = lista_animaciones[0]
         self.lista_animaciones_izquierda = lista_animaciones[1]
         self.lista_animaciones_muerte = gusano_muerto
@@ -29,18 +30,19 @@ class Enemigo(Personaje):
 
     def actualizar(self, personaje, lista_proyectiles,PANTALLA):
         if self.rango_movimiento is not None:
-            if self.rectangulo_enemigo.x >= self.rango_movimiento[1]:
-                self.direccion = -1  # Cambiar la dirección si llega al límite derecho
-                self.lista_animaciones = self.lista_animaciones_izquierda
-            elif self.rectangulo_enemigo.x <= self.rango_movimiento[0]:
-                self.direccion = 1  # Cambiar la dirección si llega al límite izquierdo
-                self.lista_animaciones = self.lista_animaciones_derecha
+            if isinstance(self.rango_movimiento, tuple):
+                if self.rectangulo_enemigo.x >= int(self.rango_movimiento[1]):
+                    self.direccion = -1  # Cambiar la dirección si llega al límite derecho
+                    self.lista_animaciones = self.lista_animaciones_izquierda
+                elif self.rectangulo_enemigo.x <= int(self.rango_movimiento[0]):
+                    self.direccion = 1  # Cambiar la dirección si llega al límite izquierdo
+                    self.lista_animaciones = self.lista_animaciones_derecha
 
-            self.rectangulo_enemigo.x += self.velocidad * self.direccion
-            self.rectangulo_enemigo.y = self.y_inicial  # Mantener la posición vertical constante
+                self.rectangulo_enemigo.x += self.velocidad * self.direccion
+                self.rectangulo_enemigo.y = self.y_inicial  # Mantener la posición vertical constante
 
-            if personaje.rectangulo_personaje.colliderect(self.rectangulo_enemigo):
-                self.recibir_daño(self.cantidad_daño_personaje,PANTALLA,personaje)  
+                if personaje.rectangulo_personaje.colliderect(self.rectangulo_enemigo):
+                    self.recibir_daño(self.cantidad_daño_personaje,PANTALLA,personaje)  
                 
     # Verificar colisión entre proyectiles y enemigo
             for proyectil in lista_proyectiles:
@@ -68,7 +70,7 @@ class Enemigo(Personaje):
         self.vivo = False
         personaje.puntos += 10 
         
-        sonido_muerte = pygame.mixer.Sound('juego_parcial\daño_enemigos.mp3')
+        sonido_muerte = pygame.mixer.Sound('./daño_enemigos.mp3')
 
         
             

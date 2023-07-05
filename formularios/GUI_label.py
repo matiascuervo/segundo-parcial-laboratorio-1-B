@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-from GUI_widget import *
+from formularios.GUI_widget import *
 
 class Label(Widget):
     def __init__(self, screen,x,y,w,h,text, font, font_size, font_color, path_image):
@@ -49,5 +49,5 @@ class Label(Widget):
     def get_text(self):
         return self._text
     
-    def update(self, lista_eventos):
+    def update(self, lista_eventos,keys,screen,w):
         self.draw()
