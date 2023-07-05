@@ -48,7 +48,7 @@ class Item(pygame.sprite.Sprite):
 
         if self.tipo == "estrella" and self.rectangulo_item.colliderect(rectangulo_personaje):
             self.contador_estrellas += 1
-            print("es la estrella de items")
+            #print("es la estrella de items")
         if self.tipo == "corazon" and self.rectangulo_item.colliderect(rectangulo_personaje):
             nueva_vida_heroe += 100
 

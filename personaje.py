@@ -135,6 +135,7 @@ class Personaje():
             #pygame.display.flip()  # Actualiza la pantalla
             #pygame.time.wait(3000)
             
+            
 
         
 
@@ -205,7 +206,7 @@ class Personaje():
     
    
 
-      # Variable para verificar si hay colisión con alguna plataforma
+      
 
     def aplicar_gravedad(self, pantalla, personaje_accion, rectangulo_personaje, plataformas, piso):
         colisionando = False  # Variable para verificar si hay colisión con alguna plataforma

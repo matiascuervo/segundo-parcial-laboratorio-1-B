@@ -33,24 +33,6 @@ fondo_escalado = pygame.transform.scale(fondo_pantalla, TAMAÑO_PANTALLA)
 
 COLOR_NEGRO = (0, 0, 0)
 COLOR_FONDO = COLOR_NEGRO
-#PANTALLA///////////////////////////////////////////
-#imagen_corazon = personaje.cargar_sprites_corazones()
-#mirando_izquierda = False
-
-  
-#PERSONAJE//////////////////////////////////////
-
-
-
-#////////////////
-
-
-#pygame.mixer.music.load("juego_parcial\Arrow_Hit_DamageAdd_WeakHit.wav")
-#PISO//////////////////
-  # Ajusta la altura de la planta según tus necesidades
-#proyctiles///////////
-
-
 
 gestinador_formularios = Gestion_formulario(PANTALLA)
 

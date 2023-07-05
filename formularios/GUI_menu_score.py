@@ -51,12 +51,12 @@ class From_menu_score(Form):
         
         self.lista_widgets.append(self.btn_home)
 
-    def btn_home_click(self,param):
+    def btn_home_click(self,screen, w, master_y):
         self.end_dialog()
         
 
-    def update(self, lista_eventos,keys):
+    def update(self, lista_eventos,keys,screen,w):
         if self.active:
             for wid in self.lista_widgets:
-                wid.update(lista_eventos)
+                wid.update(lista_eventos,keys,screen,w)
             self.draw()

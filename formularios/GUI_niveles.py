@@ -51,7 +51,7 @@ class Formulario_niveles(Form):
                 self.draw()
                 self.render()
                 for widget in self.lista_widgets:
-                    widget.update(lista_eventos,keys,self.screen,1200)
+                    widget.update(lista_eventos,keys,self.screen,w)
                 if self.miNivel:    
                     self.miNivel.leer_input(keys,self.screen,1200)
         else:
@@ -120,7 +120,7 @@ class Formulario_niveles(Form):
         plataforma = Plataforma(100,300,0,(200,75),0)
         plataforma_2 = Plataforma(800,300,0,(200,75),0)
         plataforma_3 = Plataforma(500,120,0,(300,75),2)
-        plataforma_4 = Plataforma(400,420,0,(100,75),2)
+        plataforma_4 = Plataforma(410,420,0,(100,75),2)
         plataformas=[plataforma,plataforma_2,plataforma_3,plataforma_4]
 
         personaje = Personaje(50,450, 0, 10,[personaje_camina,
@@ -144,23 +144,26 @@ class Formulario_niveles(Form):
         proyectiles = pygame.sprite.Group()
 
 
-        planta_enemigo = PlantaEnemigo(300,500,0,0,0,lista_animaciones_planta,50,50,10, 5,220)
+        planta_enemigo = PlantaEnemigo(300,510,0,0,0,lista_animaciones_planta,50,50,10, 5,220)
         planta_enemigo_2 = PlantaEnemigo(550,500,0,0,0,lista_animaciones_planta,50,50,10, 5,200)
+        planta_enemigo_3 = PlantaEnemigo(582,90,0,0,0,lista_animaciones_planta,50,50,10, 5,200)
 
-        lista_enemigos.extend([gusano_enemigo,gusano_enemigo_2,gusano_enemigo_3,planta_enemigo,planta_enemigo_2,troll_4])
+        lista_enemigos.extend([gusano_enemigo,gusano_enemigo_2,gusano_enemigo_3,planta_enemigo,planta_enemigo_2,troll_4,planta_enemigo_3])
 
         #items////////////
 
         estrella = Item(889,200, "estrella")
         estrella_2 = Item(581,80, "estrella")
         estrella_3 = Item(185,270, "estrella")
-        lista_estrellas = [estrella, estrella_2, estrella_3]
+        estrella_4 = Item(285,500, "estrella")
+        lista_estrellas = [estrella, estrella_2, estrella_3,estrella_4]
 
         corazon_1 = Item(300,100, "corazon")
         corazon_2 = Item(500,80, "corazon")
         corazon_3 = Item(100,270, "corazon")
+        corazon_4 = Item(300,480, "corazon")
 
-        lista_corazones = [corazon_1,corazon_2,corazon_3]
+        lista_corazones = [corazon_1,corazon_2,corazon_3,corazon_4]
         self.miNivel = Nivel(self.screen,personaje,plataformas,"./mapa/mapa_1.jpg",lista_enemigos,lista_proyectiles,lista_estrellas,lista_corazones,1200,1)
         self.miNivel.generarNivel("mapa\mapa_2.png")
         
