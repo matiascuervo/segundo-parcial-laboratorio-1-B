@@ -1,21 +1,24 @@
 import pygame
-
+from animaciones import*
 
 class Item(pygame.sprite.Sprite):
     def __init__(self, x, y,tipo):
         super().__init__()
         self.imagenes_corazones = [
-            pygame.image.load("./vida_estrellas\corazon_0.png"),
-            pygame.image.load("./vida_estrellas/corazon_1.png"),
-            pygame.image.load("./vida_estrellas/corazon_2.png"),
-            pygame.image.load("./vida_estrellas/corazon_3.png"),
-            pygame.image.load("./vida_estrellas/corazon_4.png")
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/corazon_0.png"), (25, 25)),
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/corazon_1.png"), (25, 25)),
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/corazon_2.png"), (25, 25)),
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/corazon_3.png"), (25, 25)),
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/corazon_4.png"), (25, 25))
         ]
+        
         self.imagenes_estrellas = [
-            pygame.image.load("./vida_estrellas\estrella_0.png"),
-            pygame.image.load("./vida_estrellas/estrella_1.png")
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/estrella_0.png"), (25, 25)),
+            pygame.transform.scale(pygame.image.load("./vida_estrellas/estrella_1.png"), (25, 25)),
+            
         ]
 
+        
         self.indice_animacion = 0
         self.image = self.imagenes_corazones[self.indice_animacion]
         self.rectangulo_item = self.image.get_rect()

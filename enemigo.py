@@ -16,7 +16,7 @@ class Enemigo(Personaje):
         self.lista_proyectiles_enemigo = []
         self.lista_animaciones_derecha = lista_animaciones[0]
         self.lista_animaciones_izquierda = lista_animaciones[1]
-        self.lista_animaciones_muerte = gusano_muerto
+ 
         self.rescalar_imagenes(width, height)
         self.rectangulo_enemigo = self.rectangulo_personaje
         # Ajustar el rectángulo del enemigo al tamaño del sprite
@@ -47,7 +47,8 @@ class Enemigo(Personaje):
     # Verificar colisión entre proyectiles y enemigo
             for proyectil in lista_proyectiles:
                 if proyectil.rect.colliderect(self.rectangulo_enemigo):
-                    self.recibir_daño(self.cantidad_daño_proyectil,PANTALLA,personaje)  
+                    self.recibir_daño(self.cantidad_daño_proyectil,PANTALLA,personaje)
+                    lista_proyectiles.remove(proyectil)  
 
 
     def renderizar(self, pantalla):
@@ -65,15 +66,16 @@ class Enemigo(Personaje):
    
     def morir(self, pantalla,personaje):
     # Lógica para el enemigo al morir
-        self.velocidad = 5  # Velocidad de caída del enemigo
+        self.velocidad = 10  # Velocidad de caída del enemigo
         self.direccion = 1  # Dirección de caída (hacia abajo)
         self.vivo = False
-        personaje.puntos += 10 
-        
-        sonido_muerte = pygame.mixer.Sound('./daño_enemigos.mp3')
-
+        personaje.puntos +=10
         
             
+
+
+        sonido_muerte = pygame.mixer.Sound('./daño_enemigos.mp3')
+      
         while self.rectangulo_enemigo.y < pantalla.get_height():
             self.rectangulo_enemigo.y += self.velocidad
 

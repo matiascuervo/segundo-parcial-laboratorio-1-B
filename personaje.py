@@ -18,7 +18,6 @@ class Personaje():
         self.rectangulo_personaje = personaje_salta[0].get_rect()
         self.rectangulo_personaje.x = x_inicial
         self.rectangulo_personaje.y = y_inicial
-        self.puntos = 0
         self.vida_heroe = 300
         self.vidas = 3
         self.heroe_vivo = True
@@ -37,7 +36,9 @@ class Personaje():
         self.esta_saltando = False
         self.desplazamiento_y = 0
         self.mirando_izquierda = False
-        
+        self.puntos = 0
+     
+
 
     def cargar_sprites_corazones(self):
         self.sprites_corazones = []  # Reiniciar la lista de sprites de corazones
@@ -107,33 +108,34 @@ class Personaje():
             
         
     def recibir_daño_heroe(self, cantidad, lista_enemigos):
-        for enemigo in lista_enemigos:
-            if self.rectangulo_personaje.colliderect(enemigo.rectangulo_enemigo):
-                self.vida_heroe -= cantidad
-                self.parpadeando = True
-                self.tiempo_animacion_daño = pygame.time.get_ticks()
-                # Resto de la lógica cuando el personaje recibe daño de un enemigo
-                return True
-            if enemigo.lista_proyectiles_enemigo:
-                for proyectil in enemigo.lista_proyectiles_enemigo:
-                    if self.rectangulo_personaje.colliderect(proyectil.rect):
-                        self.vida_heroe -= cantidad
-                        enemigo.lista_proyectiles_enemigo.remove(proyectil)
-                        self.parpadeando = True
-                        self.tiempo_animacion_daño = pygame.time.get_ticks()
-                        return True
-        return False 
+        if self.heroe_vivo:
+            for enemigo in lista_enemigos:
+                if self.rectangulo_personaje.colliderect(enemigo.rectangulo_enemigo):
+                    self.vida_heroe -= cantidad
+                    self.parpadeando = True
+                    self.tiempo_animacion_daño = pygame.time.get_ticks()
+                    # Resto de la lógica cuando el personaje recibe daño de un enemigo
+             
+                    
+                if enemigo.lista_proyectiles_enemigo:
+                    for proyectil in enemigo.lista_proyectiles_enemigo:
+                        if self.rectangulo_personaje.colliderect(proyectil.rect):
+                            self.vida_heroe -= cantidad
+                            enemigo.lista_proyectiles_enemigo.remove(proyectil)
+                            self.parpadeando = True
+                            self.tiempo_animacion_daño = pygame.time.get_ticks()
+           
+            
 
     def morir_heroe(self, pantalla):
     # Lógica para el enemigo al morir
         if self.heroe_vivo == False:
-            self.lista_animaciones= self.personaje_muerte
             imagen_game = pygame.image.load("./formularios\cosas_formularios/11.png")
             imagen_over = pygame.image.load("./formularios\cosas_formularios/12.png")
             pantalla.blit(imagen_game, (350,350))  # Especifica las coordenadas x e y de la imagen "game"
             pantalla.blit(imagen_over, (450,350))  # Especifica las coordenadas x e y de la imagen "over"
-            #pygame.display.flip()  # Actualiza la pantalla
-            #pygame.time.wait(3000)
+            
+            
             
             
 

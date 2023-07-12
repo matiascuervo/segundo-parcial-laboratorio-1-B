@@ -12,6 +12,7 @@ class Plataforma():
             pygame.transform.scale(pygame.image.load("./plataformas/0.png"),escala_plataforma),
             pygame.transform.scale(pygame.image.load("./plataformas/1.png"),escala_plataforma),
             pygame.transform.scale(pygame.image.load("./plataformas/5.png"),escala_plataforma)
+            
         ]
         self.posicion = posicion
         self.rectangulo_plataforma = self.sprites_plataforma[posicion].get_rect()

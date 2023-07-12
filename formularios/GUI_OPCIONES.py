@@ -25,7 +25,9 @@ class Formulario_opciones(Form):
         self.lable_volumen = Label(self._slave, 650, 190, 100, 50, "20%", "Arial", 15, "White", "formularios\cosas_formularios\medidor_volumen.png")
         self.slider_volumen = Slider(self._slave, x, y, 100, 200, 300, 15, self.volumen, "Red", "White")
         #self.btn_tabla = Button_Image(self._slave, x, y, 225, 100, 50, 50, "juego_parcial/formularios/Menu_BTN.png", self.btn_home_click, "m")
+        
 
+          
         self.lista_widgets.append(self.boton_play)
         self.lista_widgets.append(self.lable_volumen)
         self.lista_widgets.append(self.slider_volumen)
@@ -44,7 +46,7 @@ class Formulario_opciones(Form):
 
         self.lista_widgets.append(self.btn_home)
 
-    def update(self, lista_eventos,keys,w):
+    def update(self, lista_eventos,keys,screen,w):
         if self.verificar_dialog_result():
             if self.active:
                 self.draw()
@@ -53,7 +55,7 @@ class Formulario_opciones(Form):
                     widget.update(lista_eventos, keys, self.screen,w)
                 self.update_volumen(lista_eventos)
         else:
-            self.hijo.update(lista_eventos, keys, w)
+            self.hijo.update(lista_eventos, keys,screen,w)
 
 
     def render(self):

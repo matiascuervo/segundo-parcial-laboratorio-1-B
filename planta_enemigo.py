@@ -60,4 +60,7 @@ class PlantaEnemigo(Enemigo):
     # Verificar colisión entre proyectiles y enemigo
         for proyectil in lista_proyectiles:
             if proyectil.rect.colliderect(self.rectangulo_personaje):
-                self.recibir_daño(self.cantidad_daño_proyectil,PANTALLA,personaje)  
+                self.recibir_daño(self.cantidad_daño_proyectil,PANTALLA,personaje) 
+                lista_proyectiles.remove(proyectil)
+                 
+           

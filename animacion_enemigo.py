@@ -34,8 +34,9 @@ boss=[pygame.image.load("./enemigos/boss/boss_0.png"),
       pygame.image.load("./enemigos/boss/boss_3.png"),
       pygame.image.load("./enemigos/boss/boss_4.png"),
       pygame.image.load("./enemigos/boss/boss_5.png"),
-      pygame.image.load("./enemigos/boss/boss_daño.png")]
+      ]
 
+boss_daño=[pygame.image.load("./enemigos/boss/boss_daño.png")]
 
 araña = [pygame.image.load("./enemigos/araña/7.png"),
          pygame.image.load("./enemigos/araña/8.png"),

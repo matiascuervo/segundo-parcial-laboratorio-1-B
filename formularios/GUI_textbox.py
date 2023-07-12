@@ -64,7 +64,9 @@ class TextBox(Widget):
         self._slave.blit(image_text,(diferencia_horizontal,diferencia_vertical))#podriamos sacar cuentas para centrar el texto, por el momento 10-10
         
     
-    def update(self, lista_eventos):
+  
+
+    def update(self, lista_eventos, keys, screen, w):
         for evento in lista_eventos:
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 if self.slave_rect_collide.collidepoint(evento.pos):#me hicieron click, esto no siempre va a funcionar
@@ -76,7 +78,7 @@ class TextBox(Widget):
                     self._color_border = self._color_border_default
                     self.is_selected = False
                 self.render()
-            elif self.is_selected and evento.type == pygame.KEYDOWN:
+            elif self.is_selected and evento.type == pygame.KEYUP:
                 caracter = evento.unicode
                 if evento.key == pygame.K_BACKSPACE:
                    self._text = self._text[:-1]
@@ -84,3 +86,4 @@ class TextBox(Widget):
                     self._text += caracter
                 self.render()
         self.draw()
+        

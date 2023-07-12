@@ -61,7 +61,8 @@ personaje_ataque = [
 
 
 personaje_ataque_izquierda=girar_imagenes(personaje_ataque,True,False)
-
+personaje_muerto=[ pygame.transform.scale(pygame.image.load("./daño/muerto.png"),(75,85)),
+                  pygame.transform.scale(pygame.image.load("./daño/muerto.png"),(75,85))]
 #personaje_daño=[pygame.image.load("juego_parcial\daño/34.png"),
                 #pygame.image.load("juego_parcial\daño/35.png"),
                 #pygame.image.load("juego_parcial\daño/40.png"),

@@ -8,3 +8,5 @@ from .GUI_textbox import TextBox
 from .GUI_label import Label
 from .GUI_form import Form
 from .GUI_button_image import Button_Image
+from .MENU_PAUSA import FormularioPausa
+from .menu_puntuacion import From_menu_puntuacion
